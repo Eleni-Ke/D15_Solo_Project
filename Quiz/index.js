@@ -132,18 +132,48 @@ function starting_game() {
         
         //creating the choices
         let arrayOfChoices = questions[i].incorrect_answers;
+        let correctAnswer = questions[i].correct_answer;
         arrayOfChoices.push(questions[i].correct_answer);
         arrayOfChoices.sort(() => 0.5 - Math.random());
-        console.log(arrayOfChoices);
+        //console.log(arrayOfChoices);
         //turning them into clickable options
         for (let j = 0; j < arrayOfChoices.length; j++) {
+            //creating the buttons, Answer and continue button
             let option_button = document.createElement("button");
+            let correctAnswerResponse = document.createElement("div");
+            let wrongAnswerResponse = document.createElement("div");
+            let continueButton = document.createElement("button");
+            
+            // Modifying Answer to be able to append them to EventListener
+            correctAnswerResponse.innerText = "Correct!";
+            correctAnswerResponse.classList.add("right_answer");
+            wrongAnswerResponse.innerText = "Wrong!"
+            wrongAnswerResponse.classList.add("wrong_answer");
 
+            //Modifying continue button to append it to an EventListener
+            continueButton.classList.add("continue_button");
+            continueButton.innerText = "Continue";
+
+            //Modifying the buttons
             option_button.classList.add("option_button");
             option_button.innerText = arrayOfChoices[j];
 
-            option_button.addEventListener('click', () => { 
-                alert('Oh, you clicked me!'); })
+            option_button.addEventListener('click', (event) => { 
+                if (event.target.innerText === correctAnswer) {
+                    totalScore += 1;
+                    questionOptionContainer.innerHTML = "";
+                    questionOptionContainer.appendChild(correctAnswerResponse);
+                    questionOptionContainer.appendChild(continueButton);
+                } else {
+                    questionOptionContainer.innerHTML = "";
+                    questionOptionContainer.appendChild(wrongAnswerResponse);
+                    questionOptionContainer.appendChild(continueButton);
+                }
+            })
+
+            continueButton.addEventListener('click', () => {
+                question_sectionNode.removeChild(questionCard);
+            })
 
             questionOptionContainer.appendChild(option_button);
         }
