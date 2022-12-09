@@ -111,7 +111,7 @@ let totalScore = 0;
 function starting_game() {
     let question_sectionNode = document.getElementsByClassName("question_section")[0];
     question_sectionNode.innerHTML = "";
-    for (let i = 0; i < questions.length; i++) {
+    for (let i = questions.length - 1; i >= 0; i--) {
         //creating the card
         let questionCard = document.createElement("div");
         questionCard.classList.add("question_card");
@@ -135,7 +135,7 @@ function starting_game() {
         let correctAnswer = questions[i].correct_answer;
         arrayOfChoices.push(questions[i].correct_answer);
         arrayOfChoices.sort(() => 0.5 - Math.random());
-        //console.log(arrayOfChoices);
+
         //turning them into clickable options
         for (let j = 0; j < arrayOfChoices.length; j++) {
             //creating the buttons, Answer and continue button
@@ -185,8 +185,6 @@ function starting_game() {
         questionCard.appendChild(questionText);
         questionCard.appendChild(questionOptionContainer);
 
-        //console.log(questionCard);
-
         //append questionCard to question_section div
         question_sectionNode.appendChild(questionCard);
         
@@ -199,9 +197,9 @@ function starting_game() {
 // creating the score popup
 function ckecking_score() {
     if (totalScore < 6) {
-        alert(`Your score is ${totalScore}. I am sorry, you lost.`);
+        alert(`Your score is ${totalScore}/10. I am sorry, you lost.`);
     } else {
-        alert(`Your score is ${totalScore}. You won the game!`);
+        alert(`Your score is ${totalScore}/10. You won the game!`);
     }
 }
 
