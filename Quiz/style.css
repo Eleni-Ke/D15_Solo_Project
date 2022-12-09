@@ -1,0 +1,36 @@
+body {
+    margin-inline: center;
+    background-color: rgb(0, 2, 137);
+}
+
+h1 {
+    color: antiquewhite;
+    text-align: center;
+    border-bottom: 2px solid antiquewhite;
+}
+.instruction {
+    color: antiquewhite;
+    text-align: center;
+}
+
+.question_card {
+    background-color: antiquewhite;
+    margin: 20px auto;
+    text-align: center;
+    width: 300px;
+    height: 250px;
+    padding: 10px;
+
+}
+
+.question_card 
+
+#start_button {
+    background-color: rgb(144, 170, 255);
+    color: black;
+    line-height: 100px;
+    width: 150px;
+    margin-inline: center;
+    font-weight: bold;
+    margin-top: 75px;
+}
